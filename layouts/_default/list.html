@@ -1,14 +1,14 @@
 {{ define "main" }}
 <div id="content">
+
+    {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }} {{ range $paginator.Pages }}
+
     <article>
         <div id="post-header">
             <h1 id="title">
                 {{ if .Title }}
                 <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
                 {{ end }}
-
-
-
             </h1>
 
             <div id="meta">
