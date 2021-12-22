@@ -1,22 +1,25 @@
 {{ define "main" }}
-<div class="h-feed">
+<div id="content">
+    <article class="{{post_class}}">
+        <div id="post-header">
+            <h1 id="title">
+                {{ if .Title }}
+                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                {{ end }}
 
-	{{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }}
-	{{ range $paginator.Pages  }}
-    
-      <p class="h-entry">
-		{{ if .Title }}
-			<h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-		{{ end }}
+                <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
 
-        <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+            </h1>
 
-        <div class="e-content">
-         	{{ .Content }}
+            <div id="meta">
+                {{#has all='canonical_url'}}
+                <a href="{{url}}"><span>{{date published_at format="Do MMMM YYYY"}}</span></a> {{else}}
+                <span>{{date published_at format="Do MMMM YYYY"}}</span> {{/has}}
+            </div>
         </div>
-      </p>
-      
-    {{ end }}
+        {{ .Content }}
+    </article>
+
 
 </div>
 {{ end }}
