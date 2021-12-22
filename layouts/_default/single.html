@@ -1,9 +1,15 @@
 {{ define "main" }}
+<div id="content">
+    <article>
+        <div id="post-header">
+            <h1 id="title">
+                {{ .Title }}
+            </h1>
 
-  <h1>{{ .Title }}</h1>
-
-  <article>
-    {{ .Content }}
-  </article>
-
-{{ end }}
+            <div id="meta">
+                <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+            </div>
+        </div>
+        {{ .Content }}
+    </article>
+</div>

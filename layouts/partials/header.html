@@ -1,14 +1,32 @@
-<header>
+<header id="header">
+	<div id="header-title">
+		<a href="https://chrishannah.me">
+			<svg viewBox="0 0 960 300">
+				<symbol id="s-text">
+					<text text-anchor="middle" x="50%" y="80%">Chris Hannah</text>
+				</symbol>
 
-    <h1><a href="/">{{ .Site.Title }}</a></h1>
-
-    <nav id="navigation">
-
-        <ul>
-            {{ range .Site.Menus.main }} {{ if .Page.Params.redirect_url }}
-            <li> <a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a> </li> {{ else }}
-            <li> <a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a> </li>{{ end }} {{ end }}
-        </ul>
-    </nav>
-
+				<g class = "g-ants">
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+					<use xlink:href="#s-text" class="text-copy"></use>
+			</g>
+			</svg>
+		</a>
+	</div>
+	<p>
+		<script async type="text/javascript"
+			src="//cdn.carbonads.com/carbon.js?serve=CKYIVK3I&placement=chrishannahme" id="_carbonads_js"></script>
+	</p>
 </header>
+
+<nav id="navigation">
+
+	<ul>
+		{{ range .Site.Menus.main }} {{ if .Page.Params.redirect_url }}
+		<li> <a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a> </li> {{ else }}
+		<li> <a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a> </li>{{ end }} {{ end }}
+	</ul>
+</nav>
