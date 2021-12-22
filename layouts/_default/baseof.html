@@ -11,11 +11,14 @@
         {{ block "main" . }}{{ end }}
     </main>
 
-    {{ partial "footer.html" . }} {{ partial "custom_footer.html" . }} {{ range .Site.Params.plugins_js }}
-    <script src="{{ . }}"></script>
-    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIVK3I&placement=chrishannahme" id="_carbonads_js"></script>
+    {{ partial "footer.html" . }} 
+
+    {{ partial "custom_footer.html" . }} 
+
+    {{ range .Site.Params.plugins_js }}
+      <script src="{{ . }}"></script>
     {{ end }}
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIVK3I&placement=chrishannahme" id="_carbonads_js"></script>
 
 </body>
-
 </html>

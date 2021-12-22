@@ -1,23 +1,24 @@
 {{ define "main" }}
 <div id="content">
 
-    {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }} {{ range $paginator.Pages }}
+    {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }}
+	{{ range $paginator.Pages  }}
 
-    <article>
-        <div id="post-header">
-            <h1 id="title">
-                {{ if .Title }}
-                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-                {{ end }}
-            </h1>
+        <article>
+            <div id="post-header">
+                <h1 id="title">
+                    {{ if .Title }}
+                    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                    {{ end }}
+                </h1>
 
-            <div id="meta">
-                <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+                <div id="meta">
+                    <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+                </div>
             </div>
-        </div>
-        {{ .Content }}
-    </article>
-
+            {{ .Content }}
+        </article>
+    {{ end }}
 
 </div>
 {{ end }}
